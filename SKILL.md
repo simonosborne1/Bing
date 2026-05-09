@@ -16,7 +16,17 @@ Toggle notification sounds for Claude Code on this Windows machine.
    - If "off" → remove the hooks
    - If empty → toggle: add if absent, remove if present
 
-3. The `Stop` hook fires every time Claude finishes a response and waits for user input:
+3. The `PermissionRequest` hook fires when a tool approval dialog appears:
+
+```json
+"PermissionRequest": [
+  {
+    "hooks": [{ "type": "command", "command": "powershell -Command \"[System.Media.SystemSounds]::Asterisk.Play(); Start-Sleep -Milliseconds 1200\"" }]
+  }
+]
+```
+
+4. The `Stop` hook fires every time Claude finishes a response and waits for user input:
 
 ```json
 "Stop": [
